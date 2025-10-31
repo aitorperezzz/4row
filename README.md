@@ -29,5 +29,5 @@ This log has different levels of severity.
 After running the application for a while, you can read the logs in a file called `server.log`.
 
 If running the application with Docker, run `docker compose up` after cloning the repo, and the server will be available on port 8080 of the host machine by default.
-The port can be changed by modifying the file `compose.yaml`.
+The port can be changed by modifying the file `docker-compose.yaml`.
 After composing the application, if changes have been done to the source code, remember to run `docker compose build` before `docker compose up` to first rebuild the Docker image and then relaunch the container.
