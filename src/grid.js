@@ -1,4 +1,4 @@
-module.exports = class Grid {
+export default class Grid {
     constructor() {
         // Create an empty grid
         this.discs = [];

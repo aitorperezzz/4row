@@ -1,4 +1,4 @@
-module.exports = class PlayerInfo {
+export default class PlayerInfo {
     constructor(playerId) {
         this.playerId = playerId;
         this.gamesWon = 0;

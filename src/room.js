@@ -1,7 +1,7 @@
-let Grid = require('./grid.js');
-let PlayerInfo = require('./playerInfo.js');
+import Grid from './grid.js';
+import PlayerInfo from './playerInfo.js';
 
-module.exports = class Room {
+export default class Room {
     constructor(id, socketIds) {
         this.playersInfo = {};
         this.turn = undefined;

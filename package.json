@@ -1,10 +1,11 @@
 {
-    "name": "four-in-a-row",
+    "name": "4row",
     "version": "1.0.0",
     "description": "Simple multiplayer game: four in a row",
-    "main": "main.js",
+    "main": "app.js",
+    "type": "module",
     "scripts": {
-        "start": "node server/main.js"
+        "start": "node src/app.js"
     },
     "author": "Aitor Perez",
     "license": "ISC",

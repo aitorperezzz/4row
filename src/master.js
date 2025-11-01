@@ -1,7 +1,7 @@
-let Room = require('./room.js');
+import Room from './room.js';
 
 // The master class controls the game logic server side
-module.exports = class Master {
+export default class Master {
     constructor() {
         this.rooms = [];
     }

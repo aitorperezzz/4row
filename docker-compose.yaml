@@ -1,6 +1,7 @@
 services:
-  web:
+  4row:
     build: .
     ports:
       - "8080:8080"
     restart: unless-stopped
+    container_name: 4row

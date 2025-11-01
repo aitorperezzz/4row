@@ -1,9 +1,16 @@
 // This file implements the server code for the game.
 
-const path = require('path');
-const express = require('express');
-const winston = require('winston');
-const socketio = require('socket.io');
+import path from 'path';
+import express from 'express';
+import winston from 'winston';
+import { Server as SocketIO } from 'socket.io';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import Master from './master.js';
+
+// ===== Resolve __dirname =====
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // ===== Logger setup =====
 const { combine, timestamp, printf } = winston.format;
@@ -20,15 +27,14 @@ global.logger = winston.createLogger({
 });
 
 // ===== Game logic =====
-const Master = require('./master.js');
 const master = new Master();
 logger.info('Master created');
 
 // ===== Express server =====
 const app = express();
 
-// Serve static files from ../public
-app.use(express.static(path.join(__dirname, '../public')));
+// Serve static files from ../client
+app.use(express.static(path.join(__dirname, '../client')));
 
 // Serve p5.js from ../node_modules/p5/lib
 app.use('/lib', express.static(path.join(__dirname, '../node_modules/p5/lib')));
@@ -40,31 +46,21 @@ const server = app.listen(PORT, () => {
 });
 
 // ===== Socket.io =====
-const io = socketio(server);
+const io = new SocketIO(server);
 global.io = io;
 logger.info('Sockets up');
 
 // ===== Socket events =====
-io.sockets.on('connection', (socket) => {
+io.on('connection', (socket) => {
     logger.info('Accepting a new client with socket id ' + socket.id);
 
-    socket.on('ready', () => {
-        master.ready(socket.id);
-    });
-
-    socket.on('clicked', (data) => {
-        master.clicked(socket.id, data.col);
-    });
-
+    socket.on('ready', () => master.ready(socket.id));
+    socket.on('clicked', (data) => master.clicked(socket.id, data.col));
     socket.on('leave', () => {
         logger.info('Client is leaving');
         master.leave(socket.id);
     });
-
-    socket.on('again', () => {
-        master.again(socket.id);
-    });
-
+    socket.on('again', () => master.again(socket.id));
     socket.on('disconnect', () => {
         logger.info('Server has detected a disconnect');
         master.leave(socket.id);
