@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Four in a row</title>
 
     <!--Link the CSS stylesheet-->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css" />
 
     <!--Load the p5js library given as CDN-->
     <script src="/lib/p5.min.js"></script>
@@ -20,14 +19,12 @@
 
     <!--Load socket.io client library as provided by the server-->
     <script src="/socket.io/socket.io.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="button-area">
-        <button class="button" onclick="readyHandler()">Play</button>
+      <button class="button" onclick="readyHandler()">Play</button>
     </div>
-    <div id="sketch-holder">
-    </div>
-</body>
-
+    <div id="sketch-holder"></div>
+  </body>
 </html>
