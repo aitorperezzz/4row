@@ -1,7 +1,8 @@
 services:
   4row:
     build: .
-    ports:
-      - "8080:8080"
+    image: 4row:latest
     restart: unless-stopped
     container_name: 4row
+    ports:
+      - "8080:8080"
