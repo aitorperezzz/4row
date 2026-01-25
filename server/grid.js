@@ -71,7 +71,7 @@ export default class Grid {
                   playerId,
                   step + 1,
                   j,
-                  i
+                  i,
                 );
               } else if (step == 3) {
                 // Reached the end of the algorithm.
@@ -86,7 +86,7 @@ export default class Grid {
                     playerId,
                     step + 1,
                     j,
-                    i
+                    i,
                   );
                 }
               }

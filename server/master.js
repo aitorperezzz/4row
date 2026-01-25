@@ -25,7 +25,7 @@ export default class Master {
   // to minimise the number of these messages
   clicked(socketId, col) {
     logger.debug(
-      "Receiving a click from client " + socketId + " on column " + col
+      "Receiving a click from client " + socketId + " on column " + col,
     );
 
     for (let i = 0; i < this.rooms.length; i++) {
@@ -46,7 +46,7 @@ export default class Master {
         this.rooms.splice(i, 1);
         logger.info(
           "A room has been deleted. Current number of rooms: " +
-            this.rooms.length
+            this.rooms.length,
         );
         return;
       }
@@ -64,7 +64,7 @@ export default class Master {
       }
     }
     logger.warn(
-      "Client " + socketId + " not found in any room wants to play again"
+      "Client " + socketId + " not found in any room wants to play again",
     );
   }
 

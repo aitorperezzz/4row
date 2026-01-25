@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     turn = data.turn;
     roomId = data.roomId;
     console.log(
-      "Game begins. I am player " + playerId + " and the turn is " + turn
+      "Game begins. I am player " + playerId + " and the turn is " + turn,
     );
     mode = "play";
     buttonManager.clear();
@@ -206,7 +206,7 @@ function draw() {
         sizes.initialx + i * sizes.size,
         sizes.initialy,
         sizes.initialx + i * sizes.size,
-        sizes.initialy + sizes.ysize
+        sizes.initialy + sizes.ysize,
       );
     }
 
@@ -215,7 +215,7 @@ function draw() {
       sizes.initialx,
       sizes.initialy + sizes.ysize,
       sizes.initialx + sizes.xsize,
-      sizes.initialy + sizes.ysize
+      sizes.initialy + sizes.ysize,
     );
 
     // Draw the discs.
@@ -328,7 +328,7 @@ function displayMessages() {
       break;
     case "play":
       message.setText(
-        isMyTurn() ? "Playing. Your turn" : "Playing. Turn of player " + turn
+        isMyTurn() ? "Playing. Your turn" : "Playing. Turn of player " + turn,
       );
       submessage.setColor(colors[playerId]);
       submessage.setText(createSubmessage());
@@ -337,7 +337,7 @@ function displayMessages() {
       message.setText(
         playerId == winnerId
           ? "You are the winner!"
-          : "Player " + winnerId + " is the winner!"
+          : "Player " + winnerId + " is the winner!",
       );
       submessage.setColor(colors[playerId]);
       submessage.setText(createSubmessage());
@@ -357,7 +357,7 @@ function createSubmessage() {
     gamesWon +
     "/" +
     gamesPlayed +
-    ")" +
+    " wins)" +
     " [Room " +
     roomId +
     "]"

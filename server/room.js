@@ -24,7 +24,7 @@ export default class Room {
   // Register a new player in this room provided its socket id
   register(socketId) {
     logger.debug(
-      "Trying to register socket id " + socketId + " in room " + this.id
+      "Trying to register socket id " + socketId + " in room " + this.id,
     );
     if (!this.isFull()) {
       // Decide the player id for this client
@@ -32,14 +32,14 @@ export default class Room {
       // Add it to the dictionary
       this.playersInfo[socketId] = new PlayerInfo(playerId);
       logger.info(
-        "Socket id " + socketId + " has been registered in room " + this.id
+        "Socket id " + socketId + " has been registered in room " + this.id,
       );
 
       // If the room is now full, it's a good time to decide a turn.
       // The turn will be random
       if (this.isFull()) {
         logger.info(
-          "Room " + this.id + " is full. Telling players to begin playing"
+          "Room " + this.id + " is full. Telling players to begin playing",
         );
         this.turn = Math.random() < 0.5 ? 1 : 2;
         this.initialTurn = this.turn;
@@ -60,7 +60,7 @@ export default class Room {
       return true;
     } else {
       logger.debug(
-        "Cannot register client in room " + this.id + " because it is full"
+        "Cannot register client in room " + this.id + " because it is full",
       );
       return false;
     }
@@ -71,7 +71,7 @@ export default class Room {
     // Return early if the client does not belong to the room
     if (!this.isRegistered(socketId)) {
       logger.debug(
-        "Client " + socketId + " does not belong to room " + this.id
+        "Client " + socketId + " does not belong to room " + this.id,
       );
       return false;
     }
@@ -82,7 +82,7 @@ export default class Room {
       if (playerSocketId != socketId) {
         // This is the other player
         logger.info(
-          "Informing player " + socketId + " that the room has dissolved"
+          "Informing player " + socketId + " that the room has dissolved",
         );
         io.to(playerSocketId).emit("leave");
       }
@@ -96,7 +96,7 @@ export default class Room {
     // Return early if the client does not belong to the room
     if (!this.isRegistered(socketId)) {
       logger.debug(
-        "Client " + socketId + " does not belong to room " + this.id
+        "Client " + socketId + " does not belong to room " + this.id,
       );
       return false;
     }
@@ -120,7 +120,7 @@ export default class Room {
     // Return early if the client does not belong to the room
     if (!this.isRegistered(socketId)) {
       logger.debug(
-        "Client " + socketId + " does not belong to room " + this.id
+        "Client " + socketId + " does not belong to room " + this.id,
       );
       return false;
     }
