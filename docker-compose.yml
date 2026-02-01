@@ -1,7 +1,7 @@
 services:
   4row:
     build: .
-    image: 4row:latest
+    image: registry.home:5000/4row:latest
     restart: unless-stopped
     container_name: 4row
     ports:
