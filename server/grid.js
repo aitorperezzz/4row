@@ -14,6 +14,11 @@ export default class Grid {
   // If not, return null
   clicked(playerId, col) {
     logger.debug("Player " + playerId + " clicked on column " + col);
+    if (!this.accessible(col, 0)) {
+      logger.warn("Ignoring click on invalid column " + col);
+      return null;
+    }
+
     let row = this.getNextRow(col);
     if (row != null) {
       this.discs[col][row] = playerId;

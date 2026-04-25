@@ -2,7 +2,7 @@
     "name": "4row",
     "version": "1.0.0",
     "description": "Simple multiplayer game: four in a row",
-    "main": "app.js",
+    "main": "server/app.js",
     "type": "module",
     "scripts": {
         "start": "node server/app.js"

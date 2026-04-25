@@ -105,6 +105,7 @@ export default class Room {
     this.turn = this.initialTurn == 1 ? 2 : 1;
     this.initialTurn = this.turn;
     this.grid.reset();
+    this.playing = true;
     this.send("again", { turn: this.turn });
     return true;
   }
@@ -152,6 +153,7 @@ export default class Room {
       let winnerId = this.grid.checkWin();
       if (winnerId != null) {
         logger.info("Player " + winnerId + " has won in room " + this.id);
+        this.playing = false;
         let winnerSocketId = this.getSocketId(winnerId);
         this.playersInfo[winnerSocketId].addGameWon();
         this.getSocketIds().forEach((socketId) => {
