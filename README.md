@@ -17,7 +17,7 @@ Inside a room, a counter will display the current win rate of each of the player
 The turn will be random for the first game and will alternate from then on.
 The player's color cannot be chosen and is constant for a given room.
 
-<img src="https://github.com/aitorperezzz/4row/blob/master/images/readme_image.png" alt="drawing" align="center" width="50%"/>
+<img src="images/readme_image.png" alt="4row game screenshot" align="center" width="50%"/>
 
 ## Docker Compose
 
